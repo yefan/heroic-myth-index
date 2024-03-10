@@ -1,113 +1,86 @@
-import Image from "next/image";
+import HeroicIndexQuestion from './_components/HeroicIndexQuestion';
+
+const questions = [
+    "I collect information without making judgments.",
+    "I feel disoriented by so much change in my life.",
+    "The process of my own self-healing enables me to help heal others.",
+    "I have let others down.",
+    "I feel safe.",
+    "I put fear aside and do what needs to be done.",
+    "I put the needs of others before my own.",
+    "I try to be authentic wherever I am.",
+    "When life gets dull, I like to shake things up.",
+    "I find satisfaction caring for others",
+    "Others see me as fun.",
+    "I feel sexy.",
+    "I believe that people don't really mean to hurt each other.",
+    "As a child, I was neglected or victimized.",
+    "Giving makes me happier than receiving.",
+    "I agree with the statement, 'It is better to have loved and lost than never to have loved at all'.",
+    "I embrace life fully.",
+    "I keep a sense of perspective by taking a long-range view.",
+    "I am in the process of creating my own life.",
+    "I believe there are many good ways to look at the same thing.",
+    "I am no longer the person I thought I was. ",
+    "Life is one heartache after another.",
+    "Spiritual help accounts for my effectiveness.",
+    "I find it easier to do for others than to do for myself.",
+    "I find fulfillment through relationships.",
+    "People look to me for direction. ",
+    "I fear those in authority.",
+    "I don't take rules too seriously.",
+    "I like to help people connect with one another.",
+    "I feel abandoned.",
+    "I have times of high accomplishment that feel effortless to me.",
+    "I have leadership qualities.",
+    "I am searching for ways to improve myself.",
+    "I can count on others to take care of me. ",
+    "I prefer to be in charge.",
+    "I try to find truths behind illusions.",
+    "Changing my inner thoughts changes my outer life.",
+    "I develop resources, human or natural.",
+    "I am willing to take personal risks in order to defend my beliefs.",
+    "I can't sit back and let a wrong go by without challenging it.",
+    "I strive for objectivity.",
+    "My presence is often a catalyst for change.",
+    "I enjoy making people laugh.",
+    "I use discipline to achieve goals.",
+    "I feel loving toward people in general.",
+    " I am good at matching people's abilities with tasks to be done.",
+    "It is essential for me to maintain my independence.",
+    "I believe everyone and everything in the world are interconnected.",
+    "The world is a safe place.",
+    "People I've trusted have abandoned me.",
+    "I feel restless.",
+    "I am letting go of things that do not fit for me anymore.",
+    "I like to “lighten up” people who are too serious.",
+    "A little chaos is good for the soul.",
+    "Sacrificing to help others has made me a better person.",
+    "I am calm.",
+    "I stand up to offensive people.",
+    "I like to transform situations.",
+    "The key to success in all aspects of life is discipline.",
+    "Inspiration comes easily to me.",
+    "I do not live up to my expectations for myself.",
+    "I have a sense that a better world awaits me somewhere.",
+    "I assume that people I meet are trustworthy.",
+    "I am experiencing with turning my dreams into realities.",
+    "I know my needs will be provided for.",
+    "I feel like breaking something.",
+    "I try to manage situations with the good of all in mind.",
+    "I have a hard time saying no.",
+    "I have a lot more great ideas than I have time to act on them.",
+    "I am looking for greener pastures.",
+    "Important people in my life have let me down.",
+    "The act of looking for something is as important to me as finding it."
+]
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    return (
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <HeroicIndexQuestion
+                questions={questions}
             />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+        </main>
+    );
 }
