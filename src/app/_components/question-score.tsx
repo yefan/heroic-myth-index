@@ -20,7 +20,7 @@ const QuestionScore = ({name, score, onScoreChange}: Props) =>{
             <div>
             <Slider
                 aria-label="Scale"
-                defaultValue={score}
+                value={score}
                 valueLabelDisplay="auto"
                 shiftStep={1}
                 step={1}
