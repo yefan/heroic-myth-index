@@ -1,14 +1,18 @@
 "use client";
 import React, {useState} from 'react';
 import QuestionScore from './question-score';
+import { Button } from '@mui/material';
 
 type Props = {
     questions: Array<string>;
 }
 
+const QuestionIndexOffset = 0
+
 const HeroicIndexQuestion = ({questions}: Props) => {
 
     const [questionScores, setQuestionScores] = useState(Array<number>(questions.length).fill(3))
+    const [currentPage, setCurrentPage] = useState(QuestionIndexOffset)
     
     function handleScoreUpdate(index: number){
         return (score: number) => {
@@ -18,11 +22,16 @@ const HeroicIndexQuestion = ({questions}: Props) => {
         };
     }
     
-    const QuestionScoreList = questions.map((question, index) => {
+    const QuestionScoreList = () => {
+        const currentQuestion = currentPage - QuestionIndexOffset;
         return (
-            <QuestionScore key={question} name={question} score={questionScores[index]} onScoreChange={handleScoreUpdate(index)} />
+            <>
+            <QuestionScore name={questions[currentQuestion]} score={questionScores[currentQuestion]} onScoreChange={handleScoreUpdate(currentQuestion)} />
+            {currentPage >= 1 && <Button name="prev" variant="contained" onClick={() => setCurrentPage(currentPage - 1)}>Previous</Button>}
+            <Button name="next" variant="contained" onClick={() => setCurrentPage(currentPage + 1)}>Next</Button>
+            </>
             );
-    });
+    };
 
     const ArchetypeNames = ["Innocent", "Orphan", "Warrior", "Caregiver", "Seeker", "Lover", "Destroyer", "Creator", "Magician", "Ruler", "Sage", "Fool"]
     const ArchetypeIndices = [
@@ -55,8 +64,8 @@ const HeroicIndexQuestion = ({questions}: Props) => {
     
     return (
         <div>
-            {QuestionScoreList}
-            {ArchetypeScoring}
+            {currentPage<QuestionIndexOffset + questions.length && QuestionScoreList()}
+            {currentPage == QuestionIndexOffset + questions.length && ArchetypeScoring}
         </div>
     )
 
