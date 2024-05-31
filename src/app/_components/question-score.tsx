@@ -1,6 +1,7 @@
-"use client";
 import React, {useState} from 'react';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
+
+import styles from './questionnaire.module.css'
 
 type Props = {
     name: string;
@@ -13,23 +14,7 @@ const QuestionScore = ({name, score, onScoreChange}: Props) =>{
         onScoreChange(parseInt(event.target.value));
     };
     return (
-        <div>
-            {/* <div>
-                {name}:
-            </div>
-            <div>
-            <Slider
-                aria-label="Scale"
-                value={score}
-                valueLabelDisplay="auto"
-                shiftStep={1}
-                step={1}
-                marks
-                min={1}
-                max={5}
-                onChange={handleChange}
-                />
-            </div> */}
+        <div className={styles.text}>
             <FormControl>
             <FormLabel style={{ fontSize: '24px' }}>{name}</FormLabel>
             <RadioGroup
