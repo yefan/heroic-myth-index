@@ -5,6 +5,8 @@
 }
 .text {
     color: #777;
+    padding-bottom: 30px;
+    font-size: medium;
 }
 .btn {
     display: block;

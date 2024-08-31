@@ -14,7 +14,7 @@ const QuestionScore = ({name, score, onScoreChange}: Props) =>{
         onScoreChange(parseInt(event.target.value));
     };
     return (
-        <div className={styles.text}>
+        <div className={styles.text} style={{ position: 'relative', left: '5%' }}>
             <FormControl>
             <FormLabel style={{ fontSize: '24px' }}>{name}</FormLabel>
             <RadioGroup

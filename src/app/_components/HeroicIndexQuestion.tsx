@@ -77,12 +77,11 @@ const questions = [
     "Important people in my life have let me down.",
     "The act of looking for something is as important to me as finding it."
 ]
-const QuestionIndexOffset = 0
 
-const HeroicIndexQuestion = () => {
+const HeroicIndexQuestion = (show: boolean, updatePart: (newPart: number) => void, updateArchetypeScores: (newScores: number[]) => void) => {
 
     const [questionScores, setQuestionScores] = useState(Array<number>(questions.length).fill(3))
-    const [currentPage, setCurrentPage] = useState(QuestionIndexOffset)
+    const [currentQuestion, setCurrentQuestion] = useState(0)
     
     function handleScoreUpdate(index: number){
         return (score: number) => {
@@ -91,54 +90,59 @@ const HeroicIndexQuestion = () => {
             setQuestionScores(newScores)
         };
     }
+
+    function handleNextQuestion(){
+        if (currentQuestion < questions.length - 1){
+            setCurrentQuestion(currentQuestion + 1)
+        } else {
+            updatePart(2)
+            const ArchetypeIndices = [
+                [5, 13, 34, 49, 63, 65],
+                [14, 22, 27, 30, 50, 71], 
+                [6, 39, 40, 44, 57, 59], 
+                [7, 10, 15, 24, 55, 68],
+                [33, 47, 51, 62, 70, 72],
+                [12, 16, 17, 25, 29, 45],
+                [2, 4, 21, 52, 61, 66],
+                [8, 19, 31, 60, 64, 69], 
+                [3, 23, 37, 42, 48, 58],
+                [26, 32, 35, 38, 46, 67],
+                [1, 18, 20, 36, 41, 56],
+                [9, 11, 28, 43, 53, 54]
+            ]
+            const archetypeScores = ArchetypeIndices.map((archetypeIndex) => {
+                var totalScore = 0
+                for (const index of archetypeIndex){
+                    totalScore += questionScores[index-1]
+                } 
+                return totalScore
+            })
+            updateArchetypeScores(archetypeScores)
+        }
+    }
     
     const QuestionScoreList = () => {
-        const currentQuestion = currentPage - QuestionIndexOffset;
         return (
-            <>
-            <QuestionScore name={questions[currentQuestion]} score={questionScores[currentQuestion]} onScoreChange={handleScoreUpdate(currentQuestion)} />
-            {currentPage >= 1 && <Button name="prev" variant="contained" onClick={() => setCurrentPage(currentPage - 1)}>Previous</Button>}
-            <Button name="next" variant="contained" onClick={() => setCurrentPage(currentPage + 1)}>Next</Button>
-            </>
+            <div style={{ position: 'relative', left: '20%' }}>
+                <QuestionScore name={questions[currentQuestion]} score={questionScores[currentQuestion]} onScoreChange={handleScoreUpdate(currentQuestion)} />
+                
+                <div style={{ position: 'relative', left: '5%' }}>
+                    {currentQuestion >= 1 && <Button name="prev" variant="contained" onClick={handleNextQuestion}>Previous</Button>}
+                    <Button name="next" variant="contained" onClick={handleNextQuestion}>Next</Button>
+                </div>
+            </div>
             );
     };
-
-    const ArchetypeNames = ["Innocent", "Orphan", "Warrior", "Caregiver", "Seeker", "Lover", "Destroyer", "Creator", "Magician", "Ruler", "Sage", "Fool"]
-    const ArchetypeIndices = [
-        [5, 13, 34, 49, 63, 65],
-        [14, 22, 27, 30, 50, 71], 
-        [6, 39, 40, 44, 57, 59], 
-        [7, 10, 15, 24, 55, 68],
-        [33, 47, 51, 62, 70, 72],
-        [12, 16, 17, 25, 29, 45],
-        [2, 4, 21, 52, 61, 66],
-        [8, 19, 31, 60, 64, 69], 
-        [3, 23, 37, 42, 48, 58],
-        [26, 32, 35, 38, 46, 67],
-        [1, 18, 20, 36, 41, 56],
-        [9, 11, 28, 43, 53, 54]
-    ]
-
-    const ArchetypeScoring = ArchetypeNames.map((name, index) => {
-        const archetypeIndex = ArchetypeIndices[index]
-        var totalScore = 0
-        console.log(questionScores)
-        for (const index of archetypeIndex){
-            totalScore += questionScores[index-1]
-        } 
-        console.log(totalScore)
-        return (<div key={name}>
-                {name}: {totalScore}
-                </div>)
-    });
     
+    if (!show){
+        return null
+    }
     return (
         <div className='content'>
-            {currentPage<QuestionIndexOffset + questions.length && QuestionScoreList()}
-            {currentPage == QuestionIndexOffset + questions.length && ArchetypeScoring}
+            <QuestionScoreList />
         </div>
     )
-
 };
 
 export default HeroicIndexQuestion;
+

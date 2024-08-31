@@ -7,6 +7,15 @@
 }
 .text {
     color: #777;
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: medium;
+}
+.text_right {
+    color: #777;
+    padding-bottom: 30px;
+    text-align: right;
+    font-size: medium;
 }
 .btn {
     display: block;
